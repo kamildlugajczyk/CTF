@@ -1,9 +1,7 @@
 package pl.kamildlugajczyk.ctf.challenge;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,5 +20,10 @@ public class ChallengeController {
     @RequestMapping("/challenges/{id}")
     public Challenge getChallenge(@PathVariable int id) {
         return challengeService.getChallenge(id);
+    }
+
+    @RequestMapping(value = "/challenges", method = RequestMethod.POST)
+    public void addChallenge(@RequestBody Challenge challenge) {
+        challengeService.addChallenge(challenge);
     }
 }

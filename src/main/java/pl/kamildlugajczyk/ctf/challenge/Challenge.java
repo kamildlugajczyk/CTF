@@ -1,9 +1,14 @@
 package pl.kamildlugajczyk.ctf.challenge;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Challenge {
 
-    private String name;
+    @Id
     private int id;
+    private String name;
     private String description;
     private int points;
     private double rating;
