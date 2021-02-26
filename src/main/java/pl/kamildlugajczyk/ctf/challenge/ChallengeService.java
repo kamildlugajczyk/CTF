@@ -2,6 +2,7 @@ package pl.kamildlugajczyk.ctf.challenge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kamildlugajczyk.ctf.User.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +25,13 @@ public class ChallengeService {
 
     public void addChallenge(Challenge challenge) {
         challengeRepository.save(challenge);
+    }
+
+    public void updateChallenge(Challenge challenge) {
+        challengeRepository.save(challenge);
+    }
+
+    public void deleteChallenge(int id) {
+        challengeRepository.deleteById(id);
     }
 }
