@@ -1,4 +1,4 @@
-package pl.kamildlugajczyk.ctf.User;
+package pl.kamildlugajczyk.ctf.user;
 
 import org.springframework.data.repository.CrudRepository;
 

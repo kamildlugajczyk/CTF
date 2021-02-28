@@ -2,7 +2,6 @@ package pl.kamildlugajczyk.ctf.challenge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.kamildlugajczyk.ctf.User.User;
 
 import java.util.List;
 

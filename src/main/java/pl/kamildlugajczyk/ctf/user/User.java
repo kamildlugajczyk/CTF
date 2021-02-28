@@ -1,7 +1,11 @@
-package pl.kamildlugajczyk.ctf.User;
+package pl.kamildlugajczyk.ctf.user;
+
+import pl.kamildlugajczyk.ctf.history.History;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -12,6 +16,9 @@ public class User {
     private String password;
     private int points;
     private int ranking;
+
+    @OneToMany(mappedBy = "user")
+    Set<History> history;
 
     public User() {
     }

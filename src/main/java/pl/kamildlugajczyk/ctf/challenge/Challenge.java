@@ -1,7 +1,9 @@
 package pl.kamildlugajczyk.ctf.challenge;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import pl.kamildlugajczyk.ctf.history.History;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Challenge {
@@ -14,6 +16,9 @@ public class Challenge {
     private double rating;
     private String difficulty;
     private String flag;
+
+    @OneToMany(mappedBy = "challenge")
+    Set<History> history;
 
     public Challenge() {
     }
