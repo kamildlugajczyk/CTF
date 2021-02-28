@@ -14,6 +14,7 @@ public class User {
     private int id;
     private String name;
     private String password;
+    private String role;
     private int points;
     private int ranking;
 
@@ -23,10 +24,11 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String password, int points, int ranking) {
+    public User(int id, String name, String password, String role, int points, int ranking) {
         this.id = id;
         this.name = name;
         this.password = password;
+        this.role = role;
         this.points = points;
         this.ranking = ranking;
     }
@@ -53,6 +55,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getPoints() {
