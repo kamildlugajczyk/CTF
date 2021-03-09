@@ -18,7 +18,7 @@ public class Challenge {
     private String flag;
 
     @OneToMany(mappedBy = "challenge")
-    Set<History> history;
+    private Set<History> history;
 
     public Challenge() {
     }
@@ -87,6 +87,14 @@ public class Challenge {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public Set<History> getHistory() {
+        return history;
+    }
+
+    public void setHistory(Set<History> history) {
+        this.history = history;
     }
 }
 

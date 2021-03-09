@@ -3,23 +3,21 @@ package pl.kamildlugajczyk.ctf.history;
 import pl.kamildlugajczyk.ctf.challenge.Challenge;
 import pl.kamildlugajczyk.ctf.user.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class History {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne
-    User user;
+    private User user;
 
     @ManyToOne
-    Challenge challenge;
+    private Challenge challenge;
 
     private LocalDate date;
     private int points;
@@ -28,8 +26,9 @@ public class History {
     public History() {
     }
 
-    public History(int id, LocalDate date, int points, int userRating) {
-        this.id = id;
+    public History(User user, Challenge challenge, LocalDate date, int points, int userRating) {
+        this.user = user;
+        this.challenge = challenge;
         this.date = date;
         this.points = points;
         this.userRating = userRating;

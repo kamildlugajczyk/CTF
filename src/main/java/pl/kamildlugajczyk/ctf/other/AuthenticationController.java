@@ -1,4 +1,4 @@
-package pl.kamildlugajczyk.ctf.authentication;
+package pl.kamildlugajczyk.ctf.other;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

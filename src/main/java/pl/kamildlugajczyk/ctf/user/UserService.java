@@ -34,4 +34,17 @@ public class UserService {
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
+
+    public List<UserDTO> getRanking() {
+        List<User> users = new ArrayList<>();
+        List<UserDTO> usersDTO = new ArrayList<>();
+
+        userRepository.findTop10ByOrderByPointsDesc().forEach(users::add);
+
+        for (User user : users) {
+            usersDTO.add(new UserDTO(user.getName(), user.getPoints()));
+        }
+
+        return usersDTO;
+    }
 }

@@ -2,6 +2,7 @@ package pl.kamildlugajczyk.ctf.user;
 
 import pl.kamildlugajczyk.ctf.history.History;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,8 +19,8 @@ public class User {
     private int points;
     private int ranking;
 
-    @OneToMany(mappedBy = "user")
-    Set<History> history;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<History> history;
 
     public User() {
     }
@@ -73,12 +74,28 @@ public class User {
         this.points = points;
     }
 
+    public void addPoints(int points) {
+        this.points += points;
+    }
+
     public int getRanking() {
         return ranking;
     }
 
     public void setRanking(int ranking) {
         this.ranking = ranking;
+    }
+
+    public Set<History> getHistory() {
+        return history;
+    }
+
+    public void setHistory(Set<History> history) {
+        this.history = history;
+    }
+
+    public void updateHistory(History history) {
+        this.history.add(history);
     }
 }
 
