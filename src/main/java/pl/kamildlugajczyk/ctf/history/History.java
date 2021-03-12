@@ -65,5 +65,9 @@ public class History {
     public void setUserRating(int userRating) {
         this.userRating = userRating;
     }
+
+    public int getChallengeId() {
+        return challenge.getId();
+    }
 }
 

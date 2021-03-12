@@ -45,9 +45,13 @@ public class FlagService {
             Optional<User> user = userRepository.findByName(currentPrincipalName);
             user.orElseThrow(() -> new UsernameNotFoundException("User " + currentPrincipalName + " not found!"));
 
+            for (History history : user.get().getHistory()) {
+                if (history.getChallengeId() == challenge.get().getId())
+                    return false;
+            }
+
             History history = new History(user.get(), challenge.get(), LocalDate.now(), challenge.get().getPoints(), 0);
             user.get().addPoints(challenge.get().getPoints());
-            //historyRepository.save(history);
 
             user.get().updateHistory(history);
             userRepository.save(user.get());
