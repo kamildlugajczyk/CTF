@@ -2,6 +2,7 @@ package pl.kamildlugajczyk.ctf.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kamildlugajczyk.ctf.exception.ResourceNotFoundException;
 
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class UserService {
     }
 
     public User getUser(int id) {
-        return userRepository.findById(id).get();
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
     }
 
     public void addUser(User user) {

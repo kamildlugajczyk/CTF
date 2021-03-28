@@ -1,7 +1,10 @@
 package pl.kamildlugajczyk.ctf.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import pl.kamildlugajczyk.ctf.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -18,7 +21,11 @@ public class UserController {
 
     @RequestMapping("/users/{id}")
     public User getUser(@PathVariable int id) {
-        return userService.getUser(id);
+        try {
+            return userService.getUser(id);
+        } catch (ResourceNotFoundException exception) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
+        }
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)

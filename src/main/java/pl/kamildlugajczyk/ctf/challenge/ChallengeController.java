@@ -1,7 +1,10 @@
 package pl.kamildlugajczyk.ctf.challenge;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import pl.kamildlugajczyk.ctf.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -18,7 +21,11 @@ public class ChallengeController {
 
     @RequestMapping("/challenges/{id}")
     public Challenge getChallenge(@PathVariable int id) {
-        return challengeService.getChallenge(id);
+        try {
+            return challengeService.getChallenge(id);
+        } catch (ResourceNotFoundException exception) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provide correct challenge ID");
+        }
     }
 
     @RequestMapping(value = "/challenges", method = RequestMethod.POST)
